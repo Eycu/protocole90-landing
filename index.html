@@ -302,6 +302,19 @@
     .reveal{opacity:1!important;transform:none!important;}
   }
 </style>
+<script>
+(function() {
+  var script = document.createElement('script');
+  script.src = 'https://js.chariowcdn.com/v1/widget.min.js';
+  script.async = true;
+  document.head.appendChild(script);
+
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://js.chariowcdn.com/v1/widget.min.css';
+  document.head.appendChild(link);
+})();
+</script>
 </head>
 <body>
 
@@ -578,7 +591,17 @@
             <span class="price-old" data-fcfa="5800">5 800 F</span>
             <span class="price-save">— 50% aujourd'hui</span>
           </div>
-          <a href="https://nosimpszone.mychariow.shop/prd_6v6u1rq3/checkout" class="btn btn-primary btn-lg btn-pulse" style="margin-top:10px;width:100%;">Rejoindre le Protocole 90 maintenant →</a>
+          <div id="chariow-widget" data-product-id="prd_6v6u1rq3"
+              data-store-domain="nosimpszone.mychariow.shop"
+              data-style="tap"
+              data-border-style="rounded"
+              data-cta-width="xs"
+              data-cta-animation="shine"
+              data-locale="fr"
+              data-primary-color="#822626"
+              data-background-color="#FFFFFF"
+              data-custom-cta-text="Profiter de l'offre"
+              style="margin-top:10px;width:100%;"></div>
           <p style="margin-top:14px;font-size:.78rem;color:var(--gris);text-align:center;">Paiement sécurisé · Accès immédiat après paiement · Places limitées à 10 par cohorte</p>
 
           <div class="guarantee-box">
