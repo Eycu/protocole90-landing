@@ -1,0 +1,9 @@
+{
+  "name": "protocole90-landing",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Landing page + compteur de places pour Le Protocole 90 (Nosimpszone)",
+  "dependencies": {
+    "@vercel/kv": "^1.0.1"
+  }
+}
