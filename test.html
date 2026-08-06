@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Test — Pourquoi tu retournes toujours au porno ? | Nosimpszone</title>
+<meta name="description" content="10 déclencheurs invisibles, des exercices pour reprendre le contrôle, et un test personnalisé pour savoir où tu en es vraiment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noir:#0A0A0A; --noir-soft:#131313; --card:#181818; --card-2:#1D1D1D;
+    --bordeaux:#800020; --bordeaux-bright:#A8283F; --or:#C9A84C; --or-soft:#E4CD8F;
+    --blanc:#F2F2F2; --gris:#98938C; --border:rgba(201,168,76,.16); --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--noir);color:var(--blanc);font-family:'Poppins',sans-serif;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.serif{font-family:'Lora',serif;}
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--or);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;}
+  .eyebrow::before{content:"";width:20px;height:1px;background:var(--or);display:inline-block;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;border-radius:3px;font-weight:600;font-size:.92rem;cursor:pointer;border:none;transition:all .3s ease;}
+  .btn-primary{background:var(--bordeaux);color:var(--blanc);}
+  .btn-primary:hover{background:var(--bordeaux-bright);transform:translateY(-2px);}
+  .icon-svg{width:30px;height:30px;stroke:var(--or);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+
+  nav{padding:18px 0;background:rgba(10,10,10,.85);backdrop-filter:blur(8px);position:sticky;top:0;z-index:50;border-bottom:1px solid var(--border);}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .brand{font-weight:700;letter-spacing:.14em;font-size:.8rem;color:var(--or);}
+
+  section{padding:80px 0;}
+  .section-head{max-width:600px;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:600;line-height:1.2;}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* HERO */
+  .hero{padding:90px 0 70px;text-align:center;}
+  .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:600;line-height:1.14;max-width:16ch;margin:0 auto;}
+  .hero h1 .hl{color:var(--or);font-style:italic;}
+  .hero p{margin-top:22px;font-size:1.08rem;color:#D8D3CB;max-width:52ch;margin-left:auto;margin-right:auto;font-weight:300;}
+  .hero .btn{margin-top:34px;}
+
+  /* TRIGGERS GRID */
+  .trig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+  .trig-card{background:var(--noir);padding:26px 24px;display:flex;gap:16px;align-items:flex-start;}
+  .trig-num{font-family:'Lora',serif;color:var(--or);font-size:.85rem;font-weight:700;flex-shrink:0;width:24px;padding-top:4px;}
+  .trig-body h3{font-size:.98rem;font-weight:600;margin-bottom:4px;color:var(--blanc);}
+  .trig-body p{font-size:.86rem;color:var(--gris);}
+
+  /* EXERCISES */
+  .ex-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .ex-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:28px;}
+  .ex-num{width:34px;height:34px;border-radius:50%;background:var(--bordeaux);color:var(--blanc);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:.95rem;margin-bottom:14px;}
+  .ex-card h3{font-size:1.05rem;margin-bottom:8px;}
+  .ex-card p{font-size:.88rem;color:#C9C4BC;}
+
+  /* QUIZ */
+  .quiz-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:44px;max-width:680px;margin:0 auto;}
+  .quiz-progress-track{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:34px;}
+  .quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--bordeaux),var(--or));width:0%;transition:width .4s ease;}
+  .quiz-step-label{font-size:.74rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+  .quiz-question{font-family:'Lora',serif;font-size:1.3rem;font-weight:600;margin-bottom:26px;line-height:1.4;}
+  .quiz-options{display:flex;flex-direction:column;gap:12px;}
+  .quiz-opt{
+    background:var(--noir-soft);border:1px solid var(--border);border-radius:5px;padding:16px 18px;
+    text-align:left;color:var(--blanc);font-family:'Poppins',sans-serif;font-size:.94rem;cursor:pointer;transition:all .2s ease;
+  }
+  .quiz-opt:hover{border-color:var(--or);background:rgba(201,168,76,.06);}
+  .quiz-start{text-align:center;}
+  .quiz-start p{color:#C9C4BC;font-size:.96rem;margin-bottom:26px;}
+
+  /* RESULT */
+  #quizResult{display:none;}
+  #quizResult.show{display:block;}
+  .result-badge{display:inline-block;padding:8px 18px;border-radius:30px;border:1px solid var(--or);color:var(--or);font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px;}
+  .result-headline{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:600;line-height:1.25;margin-bottom:18px;}
+  .result-headline .hl{color:var(--or);font-style:italic;}
+  .result-body p{color:#D8D3CB;font-size:1rem;margin-bottom:16px;}
+
+  .pitch-mechanism{background:rgba(201,168,76,.06);border:1px solid var(--border);border-radius:6px;padding:26px;margin:30px 0;}
+  .value-stack{margin-top:20px;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  .value-row{display:flex;justify-content:space-between;gap:16px;padding:13px 18px;font-size:.88rem;color:#DCD7CF;border-bottom:1px solid var(--border);}
+  .value-row:last-child{border-bottom:none;}
+  .value-row.total{background:rgba(201,168,76,.08);font-weight:700;color:var(--blanc);}
+  .value-row.total .amt{color:var(--or);text-decoration:line-through;}
+  .price-row{display:flex;align-items:baseline;gap:12px;margin:26px 0 6px;}
+  .price{font-family:'Lora',serif;font-size:2.4rem;font-weight:700;}
+  .price-old{color:var(--gris);text-decoration:line-through;font-size:1rem;}
+  .spots-line{margin-top:16px;font-size:.82rem;color:var(--or-soft);text-align:center;}
+  .learn-more-link{
+    display:block;text-align:center;margin-top:16px;font-size:.86rem;color:var(--gris);
+    text-decoration:underline;text-underline-offset:3px;transition:color .2s ease;
+  }
+  .learn-more-link:hover{color:var(--or);}
+
+  footer{padding:50px 0;border-top:1px solid var(--border);text-align:center;}
+  .footer-note{color:var(--gris);font-size:.76rem;max-width:52ch;margin:0 auto;line-height:1.6;}
+
+  @media (max-width:760px){
+    .trig-grid,.ex-grid{grid-template-columns:1fr;}
+    .quiz-box{padding:28px 22px;}
+    section{padding:56px 0;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}.reveal{opacity:1!important;transform:none!important;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">NOSIMPSZONE</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow reveal in" style="justify-content:center;">Test gratuit — 2 minutes</div>
+    <h1 class="reveal in">Pourquoi tu retournes <span class="hl">toujours</span> au porno ?</h1>
+    <p class="reveal in">10 déclencheurs invisibles, 4 exercices pour reprendre le contrôle sur l'instant, et un test personnalisé à la fin pour savoir précisément où tu en es.</p>
+    <a href="#triggers" class="btn btn-primary reveal in">Découvrir les déclencheurs ↓</a>
+  </div>
+</section>
+
+<!-- 10 DÉCLENCHEURS -->
+<section id="triggers">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Partie 1</div>
+      <h2>Les 10 déclencheurs les plus fréquents</h2>
+    </div>
+    <div class="trig-grid reveal">
+      <div class="trig-card">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+        <div class="trig-body"><h3>L'ennui du soir, seul chez toi</h3><p>Rien à faire, personne à voir — le cerveau va chercher la stimulation la plus accessible.</p></div>
+      </div>
+      <div class="trig-card">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+        <div class="trig-body"><h3>Le défilement infini des réseaux</h3><p>Chaque nouveau contenu entretient le même circuit de récompense que le porno, en continu.</p></div>
+      </div>
+      <div class="trig-card">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        <div class="trig-body"><h3>Une notification suggestive</h3><p>Une publicité ou une miniature qui apparaît sans prévenir, hors de tout contexte de recherche.</p></div>
+      </div>
+      <div class="trig-card">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+        <div class="trig-body"><h3>Le stress d'une journée difficile</h3><p>Besoin d'un soulagement rapide — le porno offre une décharge de dopamine immédiate.</p></div>
+      </div>
+      <div class="trig-card">
+        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <div class="trig-body"><h3>La solitude</h3><p>En l'absence de connexion réelle disponible, le cerveau cherche une connexion de substitution.</p></div>
+      </div>
+      <div class="trig-card">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="8" width="18" height="8" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><rect x="4" y="10" width="4" height="4" fill="currentColor" stroke="none"/></svg>
+        <div class="trig-body"><h3>La fatigue de fin de journée</h3><p>Le contrôle inhibiteur s'affaiblit mécaniquement avec la fatigue — pas une question de caractère.</p></div>
+      </div>
+      <div class="trig-card">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+        <div class="trig-body"><h3>Une frustration non exprimée</h3><p>Après une dispute ou un conflit, le besoin de fuite émotionnelle immédiate prend le dessus.</p></div>
+      </div>
+      <div class="trig-card">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 18v-6a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v6"/><path d="M3 18h18"/><path d="M6 13h4"/></svg>
+        <div class="trig-body"><h3>Le lit, tard le soir</h3><p>Cerveau fatigué, chambre privée, téléphone à portée — la combinaison la plus à risque.</p></div>
+      </div>
+      <div class="trig-card">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+        <div class="trig-body"><h3>Le vide après une tâche finie</h3><p>La tension retombe d'un coup et laisse un vide que le cerveau cherche à combler aussitôt.</p></div>
+      </div>
+      <div class="trig-card">
+        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <div class="trig-body"><h3>L'habitude, tout simplement</h3><p>Même heure, même endroit, chaque jour — le cerveau exécute un automatisme, pas un choix.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div style="height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);"></div></div>
+
+<!-- EXERCICES -->
+<section id="exercices">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Partie 2</div>
+      <h2>4 exercices pour reprendre le contrôle, là, maintenant</h2>
+    </div>
+    <div class="ex-grid reveal">
+      <div class="ex-card">
+        <div class="ex-num">1</div>
+        <h3>Respiration 4-6</h3>
+        <p>4 secondes d'inspiration, 6 secondes d'expiration, pendant 2 minutes. Ce ratio active le système nerveux qui calme et réduit la réaction de stress liée à l'envie.</p>
+      </div>
+      <div class="ex-card">
+        <div class="ex-num">2</div>
+        <h3>Le surf de l'envie</h3>
+        <p>Une envie monte, atteint un pic vers 3-4 minutes, puis redescend — si tu ne la nourris pas. Observe-la comme une vague plutôt que de la combattre.</p>
+      </div>
+      <div class="ex-card">
+        <div class="ex-num">3</div>
+        <h3>La grille HALT</h3>
+        <p>Avant de céder, demande-toi : ai-je faim (Hungry), suis-je en colère (Angry), seul (Lonely), ou fatigué (Tired) ? Le vrai besoin est souvent ailleurs.</p>
+      </div>
+      <div class="ex-card">
+        <div class="ex-num">4</div>
+        <h3>Change d'environnement</h3>
+        <p>Lève-toi, change de pièce, éloigne-toi physiquement de l'écran. Le corps envoie un signal au cerveau que le contexte a changé — ça casse l'automatisme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div style="height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);"></div></div>
+
+<!-- LE TEST -->
+<section id="test">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin:0 auto 48px;text-align:center;max-width:600px;">
+      <div class="eyebrow" style="justify-content:center;">Partie 3</div>
+      <h2>Le test : où en es-tu vraiment ?</h2>
+    </div>
+
+    <div class="quiz-box reveal" id="quizBox">
+      <!-- Start screen -->
+      <div id="quizStart" class="quiz-start">
+        <p>8 questions courtes. Réponds honnêtement — ce test ne sert qu'à toi, personne d'autre ne voit tes réponses.</p>
+        <button class="btn btn-primary" id="quizStartBtn">Commencer le test →</button>
+      </div>
+
+      <!-- Question screen -->
+      <div id="quizQuestions" style="display:none;">
+        <div class="quiz-progress-track"><div class="quiz-progress-fill" id="quizProgress"></div></div>
+        <div class="quiz-step-label" id="quizStepLabel">Question 1 / 8</div>
+        <div class="quiz-question" id="quizQuestionText"></div>
+        <div class="quiz-options" id="quizOptions"></div>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="quizResult">
+      <div class="quiz-box" style="max-width:720px;">
+        <div style="text-align:center;">
+          <div class="result-badge" id="resultBadge">Résultat</div>
+          <h3 class="result-headline" id="resultHeadline"></h3>
+        </div>
+        <div class="result-body" id="resultBody"></div>
+
+        <div class="pitch-mechanism">
+          <h3 class="serif" style="font-size:1.15rem;margin-bottom:10px;color:var(--or);">La Méthode des 4 Phases de Reconstruction Cérébrale™</h3>
+          <p style="color:#C9C4BC;font-size:.92rem;">Le Protocole 90 est le programme complet construit précisément pour ce que tu viens de lire sur toi : 90 jours, 4 phases, un système étape par étape — pas juste de la volonté. Rupture immédiate, sevrage, reconstruction de l'énergie et de la discipline, puis intégration durable.</p>
+        </div>
+
+        <h3 class="serif" style="font-size:1.2rem;margin-bottom:14px;">Ce que contient le programme</h3>
+        <div class="value-stack">
+          <div class="value-row"><span>Guide complet — 4 phases, 15 chapitres, techniques sourcées</span><span class="amt">8 000 F</span></div>
+          <div class="value-row"><span>Classeur interactif (tracker, journal, grille, checklist)</span><span class="amt">6 000 F</span></div>
+          <div class="value-row"><span>Tableau de bord automatique</span><span class="amt">4 000 F</span></div>
+          <div class="value-row"><span>Accès communauté privée Telegram</span><span class="amt">7 000 F</span></div>
+          <div class="value-row"><span>🎁 Bonus — Les 30 déclencheurs invisibles</span><span class="amt">5 000 F</span></div>
+          <div class="value-row"><span>🎁 Bonus — Le Guide Anti-Rechute</span><span class="amt">3 000 F</span></div>
+          <div class="value-row"><span>🎁 Bonus — Routine Matinale Dopamine</span><span class="amt">4 000 F</span></div>
+          <div class="value-row total"><span>Valeur totale si acheté séparément</span><span class="amt">37 000 F</span></div>
+        </div>
+
+        <div class="price-row">
+          <span class="price" data-fcfa="2900">2 900 F</span>
+          <span class="price-old" data-fcfa="5800">5 800 F</span>
+        </div>
+
+        <div id="chariow-widget" data-product-id="prd_6v6u1rq3"
+            data-store-domain="nosimpszone.mychariow.shop"
+            data-style="tap"
+            data-border-style="rounded"
+            data-cta-width="xs"
+            data-cta-animation="shine"
+            data-locale="fr"
+            data-primary-color="#822626"
+            data-background-color="#FFFFFF"
+            data-custom-cta-text="Profiter de l'offre"
+            style="margin-top:16px;width:100%;"></div>
+
+        <a href="https://protocole90-landing.vercel.app" class="learn-more-link">Pas encore prêt à payer ? En savoir plus sur Le Protocole 90 →</a>
+
+        <p class="spots-line"><span id="spotsCount">10</span> places restantes sur <span id="spotsTotal">10</span> pour cette cohorte</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="footer-note">Ce test est un outil d'auto-évaluation informel, pas un diagnostic médical. Si tu ressens une détresse importante ou une perte de contrôle sévère, consulte un professionnel de santé (médecin, psychologue, addictologue).</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var script = document.createElement('script');
+  script.src = 'https://js.chariowcdn.com/v1/widget.min.js';
+  script.async = true;
+  document.head.appendChild(script);
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://js.chariowcdn.com/v1/widget.min.css';
+  document.head.appendChild(link);
+})();
+
+// Scroll reveal
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// Places restantes (réutilise la même API que la page principale)
+fetch('https://protocole90-landing.vercel.app/api/spots').then(function(r){ return r.json(); }).then(function(data){
+  var remaining = typeof data.remaining === 'number' ? data.remaining : 10;
+  var total = typeof data.total === 'number' ? data.total : 10;
+  document.getElementById('spotsCount').textContent = remaining;
+  document.getElementById('spotsTotal').textContent = total;
+}).catch(function(){});
+
+// Conversion de devise (identique à la page principale)
+var EUR_COUNTRIES = ['FR','BE','DE','ES','IT','PT','NL','LU','IE','AT','FI','GR','CY','MT','SK','SI','EE','LV','LT','HR'];
+var XOF_COUNTRIES = ['BJ','CI','SN','TG','ML','BF','NE','GW','CM','GA','CG','TD','CF','GQ'];
+var CURRENCY_CONF = {
+  XOF: { fromBase: function(v){ return v; }, format: function(v){ return Math.round(v).toLocaleString('fr-FR') + ' F'; } },
+  EUR: { fromBase: function(v){ return v * (17.99/2900); }, format: function(v){ return v.toFixed(2).replace('.', ',') + ' €'; } },
+  USD: { fromBase: function(v){ return v * (19.99/2900); }, format: function(v){ return '$' + v.toFixed(2); } },
+};
+function applyCurrency(code){
+  var conf = CURRENCY_CONF[code] || CURRENCY_CONF.XOF;
+  document.querySelectorAll('[data-fcfa]').forEach(function(el){
+    var base = parseFloat(el.dataset.fcfa);
+    if (isNaN(base)) return;
+    el.textContent = conf.format(conf.fromBase(base));
+  });
+}
+fetch('https://ipapi.co/json/').then(function(r){ return r.json(); }).then(function(data){
+  var country = data && data.country_code;
+  if (!country) return;
+  var currency = 'XOF';
+  if (EUR_COUNTRIES.indexOf(country) !== -1) currency = 'EUR';
+  else if (XOF_COUNTRIES.indexOf(country) === -1) currency = 'USD';
+  applyCurrency(currency);
+}).catch(function(){});
+
+// ---------------- QUIZ ----------------
+var QUESTIONS = [
+  { q: "À quelle fréquence consommes-tu du contenu pornographique ?", opts: [
+      { t: "Rarement, occasionnellement", p: 0 },
+      { t: "Environ une fois par semaine", p: 1 },
+      { t: "Plusieurs fois par semaine", p: 2 },
+      { t: "Quasiment tous les jours", p: 3 },
+  ]},
+  { q: "As-tu déjà essayé d'arrêter sans y arriver ?", opts: [
+      { t: "Je n'ai jamais vraiment essayé", p: 1 },
+      { t: "Une fois, sans succès durable", p: 2 },
+      { t: "Plusieurs fois, à chaque fois la même chose", p: 3 },
+      { t: "Je n'ai jamais rechuté", p: 0 },
+  ]},
+  { q: "Après une rechute, comment te sens-tu ?", opts: [
+      { t: "Neutre, ça ne me pèse pas", p: 0 },
+      { t: "Un peu déçu, mais ça passe vite", p: 1 },
+      { t: "Coupable, ça m'occupe l'esprit un moment", p: 2 },
+      { t: "Très mal, parfois pendant des heures", p: 3 },
+  ]},
+  { q: "Combien de temps y consacres-tu, cumulé sur une semaine ?", opts: [
+      { t: "Moins de 30 minutes", p: 0 },
+      { t: "Environ 1 à 2 heures", p: 1 },
+      { t: "Entre 3 et 5 heures", p: 2 },
+      { t: "Plus de 5 heures", p: 3 },
+  ]},
+  { q: "Est-ce que ça affecte ta concentration ou ton énergie en journée ?", opts: [
+      { t: "Pas vraiment", p: 0 },
+      { t: "Un peu, parfois", p: 1 },
+      { t: "Oui, régulièrement", p: 2 },
+      { t: "Oui, clairement et souvent", p: 3 },
+  ]},
+  { q: "Comment décrirais-tu ton regard sur les femmes que tu croises ?", opts: [
+      { t: "Normal, je ne remarque rien de particulier", p: 0 },
+      { t: "Je sexualise parfois, sans y penser", p: 1 },
+      { t: "C'est assez fréquent, presque automatique", p: 2 },
+      { t: "Systématique, ça me dérange moi-même", p: 3 },
+  ]},
+  { q: "Préfères-tu le porno à une vraie relation, même inconsciemment ?", opts: [
+      { t: "Non, pas du tout", p: 0 },
+      { t: "Rarement", p: 1 },
+      { t: "Ça m'arrive de me poser la question", p: 2 },
+      { t: "Oui, et ça m'inquiète un peu", p: 3 },
+  ]},
+  { q: "As-tu l'impression de contrôler tes envies, ou l'inverse ?", opts: [
+      { t: "Je me sens en contrôle", p: 0 },
+      { t: "La plupart du temps, oui", p: 1 },
+      { t: "C'est 50/50 selon les jours", p: 2 },
+      { t: "J'ai l'impression de ne plus contrôler grand-chose", p: 3 },
+  ]},
+];
+
+var currentQ = 0;
+var score = 0;
+
+document.getElementById('quizStartBtn').addEventListener('click', function(){
+  document.getElementById('quizStart').style.display = 'none';
+  document.getElementById('quizQuestions').style.display = 'block';
+  renderQuestion();
+});
+
+function renderQuestion() {
+  var q = QUESTIONS[currentQ];
+  document.getElementById('quizStepLabel').textContent = 'Question ' + (currentQ + 1) + ' / ' + QUESTIONS.length;
+  document.getElementById('quizProgress').style.width = ((currentQ) / QUESTIONS.length * 100) + '%';
+  document.getElementById('quizQuestionText').textContent = q.q;
+  var optsWrap = document.getElementById('quizOptions');
+  optsWrap.innerHTML = '';
+  q.opts.forEach(function(opt) {
+    var btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.textContent = opt.t;
+    btn.addEventListener('click', function(){ selectAnswer(opt.p); });
+    optsWrap.appendChild(btn);
+  });
+}
+
+function selectAnswer(points) {
+  score += points;
+  currentQ++;
+  if (currentQ < QUESTIONS.length) {
+    renderQuestion();
+  } else {
+    document.getElementById('quizProgress').style.width = '100%';
+    showResult();
+  }
+}
+
+function showResult() {
+  document.getElementById('quizBox').style.display = 'none';
+  var badge = document.getElementById('resultBadge');
+  var headline = document.getElementById('resultHeadline');
+  var body = document.getElementById('resultBody');
+
+  var html = '';
+  if (score <= 6) {
+    badge.textContent = 'Vigilance précoce';
+    headline.innerHTML = 'Le schéma commence à peine à s\'installer — <span class="hl">c\'est le bon moment</span> pour agir';
+    html += '<p>Tes réponses montrent que ce n\'est pas encore un problème envahissant, mais certains signaux sont déjà là. C\'est précisément le moment où un système simple fait le plus de différence — avant que l\'habitude ne se renforce davantage.</p>';
+  } else if (score <= 13) {
+    badge.textContent = 'Schéma installé';
+    headline.innerHTML = 'Un schéma clair s\'est installé — <span class="hl">et il ne partira pas tout seul</span>';
+    html += '<p>Tes réponses décrivent un schéma répétitif : rechutes, culpabilité, impact sur ton énergie ou ta concentration. Ce n\'est pas une fatalité, mais ça ne se résout pas non plus avec un simple effort de volonté ponctuel — il faut un système.</p>';
+  } else if (score <= 19) {
+    badge.textContent = 'Dépendance comportementale probable';
+    headline.innerHTML = 'Ce que tu décris ressemble à <span class="hl">une vraie dépendance comportementale</span>';
+    html += '<p>La fréquence, la perte de contrôle ressentie et l\'impact sur ton quotidien que tu décris correspondent à un schéma de dépendance comportementale. La bonne nouvelle : c\'est exactement ce que ce protocole est conçu pour traiter, étape par étape.</p>';
+  } else {
+    badge.textContent = 'Action nécessaire maintenant';
+    headline.innerHTML = 'Ce que tu vis mérite <span class="hl">une action structurée, maintenant</span>';
+    html += '<p>Tes réponses indiquent un niveau élevé sur plusieurs dimensions à la fois. Un protocole structuré peut faire une vraie différence — et si tu sens que la détresse est très importante, envisage aussi d\'en parler à un professionnel de santé en complément.</p>';
+  }
+  body.innerHTML = html;
+
+  var resultEl = document.getElementById('quizResult');
+  resultEl.classList.add('show');
+  resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+
+</body>
+</html>
